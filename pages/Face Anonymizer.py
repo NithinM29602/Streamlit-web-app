@@ -46,7 +46,7 @@ RTC_CONFIGURATION = RTCConfiguration(
     {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
 )
 
-def video_callback(frame):
+def video_callback(frame: av.VideoFrame) -> av.VideoFrame:
     img_bgr = frame.to_ndarray(format='bgr24')
     ih, iw, _ = img_bgr.shape
     image_rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)  # Converting the frame from BGR to RGB
