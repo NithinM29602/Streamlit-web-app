@@ -46,7 +46,7 @@ RTC_CONFIGURATION = RTCConfiguration(
     {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
 )
 
-def video_callback(frame: av.VideoFrame) -> av.VideoFrame:
+def video_callback(frame):
     img_bgr = frame.to_ndarray(format='bgr24')
     ih, iw, _ = img_bgr.shape
     image_rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)  # Converting the frame from BGR to RGB
@@ -128,7 +128,7 @@ def video_callback(frame: av.VideoFrame) -> av.VideoFrame:
         # source.release()
         # cv2.destroyAllWindows()
 
-    webrtc_streamer(
+webrtc_streamer(
         key="Face-Anonymizer",
         video_frame_callback=video_callback,
         mode=WebRtcMode.SENDRECV,
