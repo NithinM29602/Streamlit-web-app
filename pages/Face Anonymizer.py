@@ -35,6 +35,11 @@ for i in range(5):
 select_item = st.selectbox("**Select the Model you want**",('Rectangular Face Blur', 'Face Region Blur'),0)
 st.write("")
 blur_value = st.slider('**Blur Value**', 1, 100, 10,key='slider_string')
+
+RTC_CONFIGURATION = RTCConfiguration(
+    {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
+)
+
 def video_callback(frame):
     img_bgr = frame.to_ndarray(format='bgr24')
     ih, iw, _ = img_bgr.shape
@@ -117,4 +122,11 @@ def video_callback(frame):
         # source.release()
         # cv2.destroyAllWindows()
 
-webrtc_streamer(key='example2', video_frame_callback=video_callback, media_stream_constraints={'video':True, 'audio':False})
+    webrtc_ctx = webrtc_streamer(
+        key="Face-Anonymizer",
+        video_frame_callback=video_callback,
+        mode=WebRtcMode.SENDRECV,
+        rtc_configuration=RTC_CONFIGURATION,
+        media_stream_constraints={"video": True, "audio": False},
+        async_processing=True,
+    )
