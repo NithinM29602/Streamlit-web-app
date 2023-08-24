@@ -4,6 +4,12 @@ from streamlit_webrtc import webrtc_streamer
 import av
 import streamlit as st
 import mediapipe as mp
+from streamlit_webrtc import (
+    RTCConfiguration,
+    VideoProcessorBase,
+    WebRtcMode,
+    webrtc_streamer,
+)
 
 html_code = '''
 <style>
