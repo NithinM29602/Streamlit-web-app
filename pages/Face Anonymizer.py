@@ -128,7 +128,7 @@ def video_callback(frame):
         # source.release()
         # cv2.destroyAllWindows()
 
-    webrtc_ctx = webrtc_streamer(
+    webrtc_streamer(
         key="Face-Anonymizer",
         video_frame_callback=video_callback,
         mode=WebRtcMode.SENDRECV,
