@@ -4,3 +4,4 @@ numpy
 streamlit_webrtc
 av
 streamlit 
+streamlit_camera_input_live
