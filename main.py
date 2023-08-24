@@ -1,23 +1,9 @@
 import streamlit as st
+from streamlit_camera_input_live import camera_input_live
 
-st.header("Welcome to my World")
+frame = camera_input_live()
 
-import cv2
-import streamlit as st
-import numpy as np
-
-cap = cv2.VideoCapture(0)
-
-st.title("Webcam Video Stream")
-
-while True:
-    ret, frame = cap.read()
-    if not ret:
-        break
-
-    # Perform your processing on 'frame' here
-
-    # Display the frame in Streamlit
-    st.image(frame, channels="BGR", use_column_width=True)
+# Display the frame using Streamlit
+st.image(frame)
 
 cap.release()
