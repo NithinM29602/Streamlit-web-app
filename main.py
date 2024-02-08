@@ -1,3 +1,3 @@
 import streamlit as st
 
-st.header("Welcome to my World")
+st.write("Welcome to my World")
